@@ -184,7 +184,6 @@ include_directories(${CUBE_INCLUDE_DIRS})
 if(APPLE)
     include(macOS/cube/cube.cmake)
 elseif(NOT WIN32)
-    if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL ${CMAKE_HOST_SYSTEM_PROCESSOR})
         add_executable(vkcube
                        cube.c
                        ${PROJECT_SOURCE_DIR}/cube/cube.vert
@@ -197,7 +196,6 @@ elseif(NOT WIN32)
         if (NEED_RT)
             target_link_libraries(vkcube rt)
         endif()
-    endif()
 else()
     if(CMAKE_CL_64)
         set(LIB_DIR "Win64")
@@ -234,7 +232,6 @@ endif()
 if(APPLE)
     include(macOS/cubepp/cubepp.cmake)
 elseif(NOT WIN32)
-    if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL ${CMAKE_HOST_SYSTEM_PROCESSOR})
         add_executable(vkcubepp
                        cube.cpp
                        ${PROJECT_SOURCE_DIR}/cube/cube.vert
@@ -242,7 +239,6 @@ elseif(NOT WIN32)
                        cube.vert.inc
                        cube.frag.inc)
         target_link_libraries(vkcubepp Vulkan::Vulkan)
-    endif()
 else()
     if(CMAKE_CL_64)
         set(LIB_DIR "Win64")
